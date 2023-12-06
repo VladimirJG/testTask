@@ -6,12 +6,12 @@
     <title>Input </title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/string/output}" th:object="${str}">
+<form th:method="POST" th:action="@{/strings}" th:object="${str}">
     <label for="string">Введите Строку: </label>
     <input type="text" th:field="*{inputString}" id="string"/>
-<!--    <div style="color:red" th:if="${#fields.hasErrors('string')}" th:errors="*{inputString}"> Error</div>-->
+    <div style="color:red" th:if="${#fields.hasErrors('inputString')}" th:errors="*{inputString}"> Error</div>
     <br/>
-    <a href="/string/output"> <input type="submit" value="Создать список"></a>
+    <input type="submit" value="Создать список"/>
 </form>
 
 </body>

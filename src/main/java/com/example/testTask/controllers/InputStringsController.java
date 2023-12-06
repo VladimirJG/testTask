@@ -7,32 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-
 @Controller
-@RequestMapping("/string")
-public class InputStringController {
+@RequestMapping("/strings")
+public class InputStringsController {
     private final InputStringDAO inputStringDAO;
 
     @Autowired
-    public InputStringController(InputStringDAO inputStringDAO) {
+    public InputStringsController(InputStringDAO inputStringDAO) {
         this.inputStringDAO = inputStringDAO;
     }
 
-    @GetMapping("/input")
+    @GetMapping()
     public String input(@ModelAttribute("str") InputString inputString) {
-        return "string/input";
+        return "/strings/new";
     }
 
-    @PostMapping("/output")
-    public String output(@ModelAttribute("str") @Valid InputString inputString, BindingResult bindingResult, Model model) {
-       /* if (bindingResult.hasErrors())
-            return "string/input";*/
+    @PostMapping()
+    public String output(@ModelAttribute("str")  @Valid InputString inputString, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors())
+            return "/strings/new";
 
         model.addAttribute("list", inputStringDAO.getSortedValue(inputString));
-        return "string/output";
+        return "strings/output";
     }
 }
