@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список</title>
+</head>
+<body>
+<div th:each="s : ${list}">
+    <a th:text="${s + ', '}">String</a>
+</div>
+<br/>
+<hr/>
+<a href="/string/input"> <input type="submit" value="Ввести новую строку"></a>
+</body>
+</html>
