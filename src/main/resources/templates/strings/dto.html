@@ -2,17 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-
-    <title>Input </title>
+    <title>Input for dto</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/strings}"  th:object="${str}">
+<form th:method="POST" th:action="@{/strings/dto}"  th:object="${strDTO}">
     <label for="string">Введите Строку: </label>
     <input type="text" th:field="*{inputString}" id="string"/>
-    <div style="color:red" th:if="${#fields.hasErrors('inputString')}" th:errors="*{inputString}"> Error</div>
     <br/>
-    <input type="submit" value="Создать список"/>
+    <input type="submit" value="Создать JSON"/>
 </form>
-
 </body>
 </html>

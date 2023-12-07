@@ -3,13 +3,15 @@ package com.example.testTask.dao;
 import com.example.testTask.models.InputString;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Component
-public class InputStringDAO {
-
+public class InputStringsDAO {
 
     public List<String> getSortedValue(InputString inputString) {
         String s = inputString.getInputString();
