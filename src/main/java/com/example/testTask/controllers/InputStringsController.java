@@ -61,6 +61,15 @@ public class InputStringsController {
             return inputStringsService.getSortedValue(inputString);
         }
     }
+    @ResponseBody
+    @GetMapping("/swag")
+    public List<String> getJsonFromString(@Valid InputString inputString, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return returnErrorsToClient(bindingResult);
+        } else {
+            return inputStringsService.getSortedValue(inputString);
+        }
+    }
 
     private InputString convertToInputString(InputStringsDTO inputStringsDTO) {
         return modelMapper.map(inputStringsDTO, InputString.class);
